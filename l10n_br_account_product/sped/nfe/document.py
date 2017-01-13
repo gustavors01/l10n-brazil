@@ -290,12 +290,12 @@ class NFe200(FiscalDocument):
             self.nfe.infNFe.dest.xNome.valor = (
                 invoice.partner_id.legal_name[:60] or '')
 
-            if invoice.partner_id.is_company:
-                self.nfe.infNFe.dest.IE.valor = punctuation_rm(
-                    invoice.partner_id.inscr_est)
+        if invoice.partner_id.is_company:
+            self.nfe.infNFe.dest.IE.valor = punctuation_rm(
+                invoice.partner_id.inscr_est)
 
-            if invoice.partner_id.country_id.id == \
-                    invoice.company_id.country_id.id:
+        if invoice.partner_id.country_id.id == \
+            invoice.company_id.country_id.id:
                 if invoice.partner_id.is_company:
                     self.nfe.infNFe.dest.CNPJ.valor = punctuation_rm(
                         invoice.partner_id.cnpj_cpf)
